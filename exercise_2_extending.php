@@ -1,36 +1,39 @@
 <?php
 
 declare(strict_types=1);
-require "exercise_1_classes.php";
 
-class Beer extends Beverages {
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
-
-
-    public string $Beer;
-    public float $alcoholpercentage;
-
-public function __construct(string $Beer,float $alcoholpercentage ){
-
-
-    $this->Beer = $Beer;
-    $this->alcoholpercentage = $alcoholpercentage;
-}
-
-public function test()
+require ('exercise_1_classes.php');
+class Beer extends Beverage
 {
+    public string $name;
+    public float $alcoholPercentage;
 
-    echo "This beverage is {$this->Beer} and the Alcohol Content is {$this->alcoholpercentage} .";
+    public function __construct(string $color, float $price, string $name, float $alcoholPercentage)
+    {
+        parent::__construct($color, $price, $temperature = 'cold');
+        $this -> name = $name;
+        $this -> alcoholPercentage = $alcoholPercentage;
 
-}
-}
+    }
+    public function getAlcoholPercentage ()
+    {
+        echo "$this->name contains $this->alcoholPercentage % of alcohol";
+        echo "<br>";
+        return "$this->name contains $this->alcoholPercentage % of alcohol";
+    }
+};
 
-$tester = new Beverages("green",23);
-$tester->test();
+$beer = new Beer('blond', 3.5, 'Duvel', 8.5);
 
-
-
-
+echo $beer->name;
+echo '<br>';
+echo $beer->getInfo();
+echo '<br>';
+echo $beer->getAlcoholPercentage();
 
 
     /* EXERCISE 2
